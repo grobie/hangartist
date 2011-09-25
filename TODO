@@ -16,7 +16,7 @@
 # Bugs/Improvements
 
 * only 15 different artists available
-* remove "(Album Version)" string from songs
+* remove "(Album Version), (Live Acoustic)" string from songs
 * performance
 * create blacklist for bad content
 

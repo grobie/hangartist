@@ -1,0 +1,15 @@
+.question {
+  width: 400px;
+  padding: 10px;
+  margin: 0 0 20px 0;
+  border: 2px solid black;
+}
+.question blockquote {
+  background: url(/images/quote.gif) no-repeat top left;
+  font-style: italic;
+  padding: 20px 20px 20px 70px;
+  margin: 10px;
+}
+.question img {
+  width: 400px;
+}
