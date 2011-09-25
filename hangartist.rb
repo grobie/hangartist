@@ -1,4 +1,4 @@
-require 'sinatra'
+require 'sinatra/base'
 require 'sinatra/activerecord'
 
 require_relative "lib/echonest"
@@ -42,4 +42,6 @@ class HangArtist < Sinatra::Base
       redirect "/#{@game.id}"
     end
   end
+
+  run!
 end
