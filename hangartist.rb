@@ -32,14 +32,16 @@ end
 
 get '/:permalink' do
   @round = Round.find_by_permalink!(params[:permalink])
-  erb :round
+  erb @round.state.to_sym
 end
 
 post '/:permalink/solve' do
   @round = Round.find_by_permalink!(params[:permalink])
-  if @round.artist.name == params[:artist]
+  if @round.active? && @round.solved?(params[:attempt])
+    @round.solve!
     erb :won
   else
+    @round.increment_question_number! if @round.active?
     redirect "/#{@round.permalink}"
   end
 end

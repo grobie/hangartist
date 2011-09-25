@@ -1,5 +1,6 @@
 class Game < ActiveRecord::Base
   belongs_to :artist
+  has_many :questions
 
   validates  :artist, :presence => true
   validates  :permalink, :presence => true
@@ -13,6 +14,10 @@ class Game < ActiveRecord::Base
 
   def set_artist
     self.artist ||= Artist.create_random
+  end
+
+  def question(number)
+    questions.find_by_number(number) || questions.create
   end
 
 end

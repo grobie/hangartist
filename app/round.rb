@@ -4,17 +4,17 @@ class Round < ActiveRecord::Base
   include AASM
 
   aasm_column :state
-  aasm_initial_state :created
-  aasm_state :created
+  aasm_initial_state :active
+  aasm_state :active
   aasm_state :won
   aasm_state :lost
 
-  aasm_event :right do
-    transitions :from => [ :created ], :to => :won
+  aasm_event :solve do
+    transitions :from => :active, :to => :won
   end
 
   aasm_event :give_up do
-    transitions :from => [ :created ], :to => :lost
+    transitions :from => :active, :to => :lost
   end
 
   belongs_to :game
@@ -24,6 +24,7 @@ class Round < ActiveRecord::Base
 
   before_validation :set_game, :on => :create
   before_validation :set_permalink, :on => :create
+
   before_create :set_player
 
   def set_game
@@ -38,24 +39,20 @@ class Round < ActiveRecord::Base
     self.player ||= "Guest"
   end
 
-  def artist
-    game.artist
+  def artist_name
+    game.artist.name
   end
 
-  # :quote => [ :random_biography_sentence, :random_review_sentence ]
-  # :fact  => [ :years_active, :random_track ]
-  # :image => [ :random_image ]
-  # :track => [ :random_track ]
   def question
-    types = {
-      :quote => [ :random_biography_sentence, :random_review_sentence ],
-      :fact  => [ :years_active, :random_song ],
-      :image => [ :random_image ],
-      :track => [ :random_track ],
-    }
-    type = types.keys.sample
-    method = types[type].sample
-    (value = artist.send(method)) ? [ type, value ] : question
+    game.question(question_number)
+  end
+
+  def increment_question_number!
+    update_attributes!(:question_number => question_number + 1)
+  end
+
+  def solved?(attempt)
+    attempt == artist_name
   end
 
 end

@@ -4,7 +4,7 @@ class CreateQuestions < ActiveRecord::Migration
       t.integer :game_id
       t.string  :kind
       t.text    :content
-      t.integer :position
+      t.integer :number
       t.timestamps
     end
     add_index :questions, :game_id

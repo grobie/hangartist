@@ -1,10 +1,15 @@
 #container {
-  width: 420px;
+  width: 500px;
   margin: 20px auto;
+  padding: 0;
+}
+
+.center {
+  text-align: center;
 }
 
 .question {
-  width: 400px;
+  width: 480px;
   padding: 10px;
   margin: 0 0 20px 0;
   border: 2px solid black;
@@ -16,5 +21,5 @@
   margin: 10px;
 }
 .question img {
-  width: 400px;
+  width: 480px;
 }

@@ -39,6 +39,7 @@ GEM
     mime-types (1.16)
     multi_json (1.0.3)
     multipart-post (1.1.3)
+    mysql (2.8.1)
     pg (0.11.0)
     rack (1.3.3)
     rest-client (1.6.1)
@@ -68,6 +69,7 @@ DEPENDENCIES
   faraday
   foreman
   heroku
+  mysql
   pg (= 0.11.0)
   sinatra
   sinatra-activerecord

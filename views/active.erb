@@ -1,7 +1,7 @@
 <%= erb :question, :locals => { :question => @round.question } %>
 
 <form action="/<%= @round.permalink %>/solve" method="post">
-  <input type="text" name="artist" />
+  <input type="text" name="attempt" />
   <input type="submit" value="Solve!" />
 </form>
 

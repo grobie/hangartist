@@ -15,4 +15,5 @@ group :development do
   gem "heroku"
   gem "foreman"
   gem "sqlite3"
+  gem "mysql"
 end
