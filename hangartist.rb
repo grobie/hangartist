@@ -45,7 +45,7 @@ post '/:permalink/solve' do
 end
 
 post '/:permalink/give_up' do
-  @round = Round.find(params[:permalink])
+  @round = Round.find_by_permalink!(params[:permalink])
   @round.give_up!
   erb :lost
 end
