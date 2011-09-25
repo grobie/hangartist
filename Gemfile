@@ -6,7 +6,7 @@ gem "faraday"
 gem "aasm"
 
 group :production do
-  gem "pg", "0.10.0"
+  gem "pg", "0.11.0"
 end
 
 group :development do
