@@ -13,7 +13,7 @@ class Game < ActiveRecord::Base
     transitions :from => [ :created ], :to => :won
   end
 
-  aasm_event :wrong do
+  aasm_event :give_up do
     transitions :from => [ :created ], :to => :lost
   end
 

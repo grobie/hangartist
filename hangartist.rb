@@ -33,11 +33,17 @@ get '/:id' do
   erb :show
 end
 
-get '/:id/solve' do
+post '/:id/solve' do
   @game = Game.find(params[:id])
   if @game.artist.name == params[:artist]
-    "FUCK YEAH!"
+    erb :won
   else
     redirect "/#{@game.id}"
   end
+end
+
+post '/:id/give_up' do
+  @game = Game.find(params[:id])
+  @game.give_up!
+  erb :lost
 end

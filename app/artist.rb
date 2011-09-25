@@ -1,3 +1,5 @@
+require "tactful_tokenizer"
+
 class Artist < ActiveRecord::Base
   validates :eid, :presence => true
   validates :name, :presence => true
@@ -49,9 +51,8 @@ private
 
   def random_sentence(text)
     return unless text.strip.present?
-    sentence = text.split(".").map { |s| s.strip.empty? ? nil : s.strip }.sample
-    sentence << "." unless sentence.ends_with?(".")
-    sentence.gsub(self.name, "*******")
+    sentences = TactfulTokenizer::Model.new.tokenize_text(text)
+    (sentence = sentences.sample) ? sentence.gsub(self.name, "*******") : nil
   end
 
 end

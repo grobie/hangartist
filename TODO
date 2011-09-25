@@ -1,6 +1,5 @@
 # Important
 
-* deploy to heroku
 * save progress
 
 # Cool stuff
@@ -14,16 +13,19 @@
 * twitter/facebook support
 * multiplayer support
 
-
 # Bugs/Improvements
 
-* don't split urls
 * only 15 different artists available
 * remove "(Album Version)" string from songs
-
+* performance
+* create blacklist for bad content
 
 # Done
 
+* New game button
+* Give up button
+* deploy to heroku
 * answer questions
 * random hot artist
 * display questions
+* don't split urls
