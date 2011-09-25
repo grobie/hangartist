@@ -1,0 +1,3 @@
+require './hangartist'
+
+run HangArtist
