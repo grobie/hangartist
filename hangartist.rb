@@ -1,11 +1,6 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 
-begin
-  require 'sinatra/reloader'
-rescue LoadError
-end
-
 require_relative "lib/echonest"
 require_relative "app/artist"
 require_relative "app/game"
@@ -28,7 +23,6 @@ class HangArtist < Sinatra::Base
 
   post '/' do
     if @game = Game.create
-      puts @game.inspect
       redirect "/#{@game.id}"
     else
       "FAILURE"
@@ -37,5 +31,15 @@ class HangArtist < Sinatra::Base
 
   get '/:id' do
     @game = Game.find(params[:id])
+    erb :show
+  end
+
+  get '/:id/solve' do
+    @game = Game.find(params[:id])
+    if @game.artist.name == params[:artist]
+      "FUCK YEAH!"
+    else
+      redirect "/#{@game.id}"
+    end
   end
 end

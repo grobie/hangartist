@@ -12,7 +12,7 @@ module Echonest
     end
 
     def self.hot
-      get_one(:top_hottt, :results => 1)
+      get_many(:top_hottt, :results => 15)
     end
 
     def self.search(name)
@@ -37,7 +37,7 @@ module Echonest
 
     def self.years_active(id)
       response = get(:profile, :id => id, :bucket => "years_active")
-      response["artist"] && response["artist"]["years_active"]
+      response["artist"] && response["artist"]["years_active"].first
     end
 
     def self.reviews(id)
@@ -52,9 +52,14 @@ module Echonest
       images.present? ? images.map { |image| image["url"] } : []
     end
 
-    def self.get_one(action, params = {}, &block)
+    def self.get_one(action, params = {})
       artists = get(action, params)["artists"]
       artists.present? ? new(*artists.first.values_at("id", "name")) : nil
+    end
+
+    def self.get_many(action, params = {})
+      artists = get(action, params)["artists"]
+      artists.map { |artist| new(*artist.values_at("id", "name")) }
     end
 
     def self.get(url, params = {})

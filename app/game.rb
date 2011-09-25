@@ -25,4 +25,20 @@ class Game < ActiveRecord::Base
     self.artist ||= Artist.create_random
   end
 
+  # :quote => [ :random_biography_sentence, :random_review_sentence ]
+  # :fact  => [ :years_active, :random_track ]
+  # :image => [ :random_image ]
+  # :track => [ :random_track ]
+  def question
+    types = {
+      :quote => [ :random_biography_sentence, :random_review_sentence ],
+      :fact  => [ :years_active, :random_song ],
+      :image => [ :random_image ],
+      :track => [ :random_track ],
+    }
+    type = types.keys.sample
+    method = types[type].sample
+    (value = artist.send(method)) ? [ type, value ] : question
+  end
+
 end

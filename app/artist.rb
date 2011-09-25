@@ -4,7 +4,7 @@ class Artist < ActiveRecord::Base
   before_validation :get_echonest_id, :on => :create
 
   def self.create_random
-    (hot = Echonest::Artist.hot) && create(:eid => hot.id, :name => hot.name)
+    (hot = Echonest::Artist.hot.sample) && create(:eid => hot.id, :name => hot.name)
   end
 
   def biographies
@@ -16,7 +16,8 @@ class Artist < ActiveRecord::Base
   end
 
   def random_song
-    Echonest::Artist.songs(eid).sample
+    song = Echonest::Artist.songs(eid).sample
+    song && ["The artist created", song]
   end
 
   def random_track
@@ -25,7 +26,7 @@ class Artist < ActiveRecord::Base
 
   def years_active
     years_active = Echonest::Artist.years_active(eid)
-    years_active && years_active["start"]
+    years_active && ["Active since", years_active["start"]]
   end
 
   def reviews
@@ -34,6 +35,10 @@ class Artist < ActiveRecord::Base
 
   def random_review_sentence
     random_sentence(self.reviews.sample)
+  end
+
+  def random_image
+    Echonest::Artist.images(eid).sample
   end
 
 private
@@ -46,7 +51,7 @@ private
     return unless text.strip.present?
     sentence = text.split(".").map { |s| s.strip.empty? ? nil : s.strip }.sample
     sentence << "." unless sentence.ends_with?(".")
-    sentence.gsub(self.name, "...")
+    sentence.gsub(self.name, "*******")
   end
 
 end

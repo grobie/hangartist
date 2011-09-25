@@ -1,0 +1,8 @@
+<h1>Who is being searched?</h1>
+
+<%= erb :question, :locals => { :question => @game.question } %>
+
+<form action="/<%= @game.id %>/solve" action="post">
+  <input type="text" name="artist" />
+  <input type="submit" value="solve!" />
+</form>
