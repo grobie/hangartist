@@ -48,6 +48,10 @@ end
 
 post '/:permalink/give_up' do
   @round = Round.find_by_permalink!(params[:permalink])
-  @round.give_up!
-  erb :lost
+  if @round.active?
+    @round.give_up!
+    erb :lost
+  else
+    redirect "/#{@round.permalink}"
+  end
 end
