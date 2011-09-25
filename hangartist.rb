@@ -40,7 +40,7 @@ post '/:permalink/solve' do
   if @round.artist.name == params[:artist]
     erb :won
   else
-    redirect "/#{@round.id}"
+    redirect "/#{@round.permalink}"
   end
 end
 

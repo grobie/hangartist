@@ -1,10 +1,10 @@
 <%= erb :question, :locals => { :question => @round.question } %>
 
-<form action="/<%= @round.id %>/solve" method="post">
+<form action="/<%= @round.permalink %>/solve" method="post">
   <input type="text" name="artist" />
   <input type="submit" value="Solve!" />
 </form>
 
-<form action="/<%= @round.id %>/give_up" method="post">
+<form action="/<%= @round.permalink %>/give_up" method="post">
   <input type="submit" value="Give up :(" />
 </form>
