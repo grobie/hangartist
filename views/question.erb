@@ -1,3 +1,6 @@
 <div class="question">
-  <%= erb :"questions/#{question.kind}", :locals => { :object => question.content } %>
+  <div class="content">
+    <%= erb :"questions/#{question.kind}", :locals => { :object => question.content } %>
+  </div>
+  <div class="shadow"></div>
 </div>

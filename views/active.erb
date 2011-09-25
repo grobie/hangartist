@@ -1,10 +1,29 @@
-<%= erb :question, :locals => { :question => @round.question } %>
+<div id="left">
+  <img src="/images/logo_top_transp.png" class="legs" />
+  <img src="/images/logo_bottom.png" class="logo" />
 
-<form action="/<%= @round.permalink %>/solve" method="post">
-  <input type="text" name="attempt" />
-  <input type="submit" value="Solve!" />
-</form>
+  <div id="tries">
+    <span class="small">you're hanging</span>
+    <span class="big"><%= "#{@round.question_number} #{@round.question_number == 1 ? "try" : "tries"}" %></small>
+    <span class="small">above ground</span>
+  </div>
 
-<form action="/<%= @round.permalink %>/give_up" method="post">
-  <input type="submit" value="Give up :(" />
-</form>
+  <img src="/images/poweredby.jpg" class="poweredby" />
+</div>
+
+<div id="center">
+  <%= erb :question, :locals => { :question => @round.question } %>
+  <h2>Who is this?</h2>
+</div>
+
+<div id="right">
+  <img src="/images/rechtsoben_this_is.png" />
+  <form action="/<%= @round.permalink %>/solve" method="post">
+    <input type="text" name="attempt" class="text" />
+    <input type="image" src="/images/button_solve_default.png" />
+  </form>
+
+  <form action="/<%= @round.permalink %>/give_up" method="post" class="giveup">
+    <input type="image" src="/images/button_giveup_default.png" />
+  </form>
+</div>

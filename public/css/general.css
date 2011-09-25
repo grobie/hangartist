@@ -1,18 +1,59 @@
-#container {
-  width: 500px;
-  margin: 20px auto;
+html, body {;
+  margin: 0;
   padding: 0;
+  font-family: Georgia;
+  height: 100%;
+}
+
+#container {
+  margin: 0 auto;
+  width: 1182px;
+  height: 100%;
+}
+#left {
+  float: left;
+  margin: 0 60px 0 0;
+  padding: 0;
+  width: 255px;
+  height: 100%;
+/*  background-color: red;*/
+}
+#center {
+  float: left;
+  width: 428px;
+  margin: 0;
+  padding: 15px 50px;
+  height: 100%;
+  background: url(/images/background_centered.png) repeat-y top left;
+}
+#right {
+  float: left;
+  margin: 100px 0 0 60px;
+  width: 255px;
+  height: 100%;
+/*  background-color: red;*/
 }
 
 .center {
   text-align: center;
 }
+.clear {
+  clear: both;
+}
 
 .question {
-  width: 480px;
-  padding: 10px;
-  margin: 0 0 20px 0;
+  width: 428px;
+  padding: 0;
+  margin: 0 0 15px 0;
+}
+.question .content {
   border: 2px solid black;
+  background-color: white;
+}
+.question .shadow {
+  width: 428px;
+  height: 15px;
+  background: transparent url(/images/centerbox_shadow.png) no-repeat bottom right;
 }
 .question blockquote {
   background: url(/images/quote.gif) no-repeat top left;
@@ -21,5 +62,52 @@
   margin: 10px;
 }
 .question img {
-  width: 480px;
+  width: 404px;
+  margin: 10px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  font-family: Georgia;
+}
+
+form.giveup {
+  margin: 100px 0 0 0;
+}
+
+input.text {
+  width: 230px;
+  height: 48px;
+  margin: 0 0 10px 0;
+  padding: 0 10px;
+
+  font-size: 24px;
+
+  border-radius: 10px;
+  border: 1px solid #CCC;
+  box-shadow: 5px 5px 5px rgba(10, 10, 10, 0.7) inset;
+}
+
+.legs {
+  margin: 0 0 0 120px;
+}
+#tries {
+  width: 252px;
+  height: 128px;
+  background: url(/images/counter_bg.png);
+  padding: 15px 0 0 40px;
+}
+#tries .small {
+  display: block;
+  font-size: 24px;
+  font-weight: bold;
+}
+#tries .big {
+  display: block;
+  font-size: 48px;
+  font-weight: bold;
+}
+.poweredby {
+  margin: 50px 0;
 }
