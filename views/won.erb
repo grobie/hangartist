@@ -1,5 +1,9 @@
-Yeeehaaaa! You got it, it's <strong><%= @round.artist_name %></strong>!
+<div class="center">
+  <h1 style="margin: 21px 0 10px 0">That's correct!</h1>
+  <h3>(It took you <%= "#{@round.question_number} #{@round.question_number == 1 ? "try" : "tries"}" %>)<h3>
+  <img src="/images/pokal.png" />
 
-<form action="/" method="post">
-  <input type="submit" value="New Game!" />
-</form>
+  <form action="/" method="post" class="center">
+    <input type="image" src="/images/button_startgame_default.png" />
+  </form>
+</div>
