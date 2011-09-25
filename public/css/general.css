@@ -47,6 +47,7 @@ html, body {;
   margin: 0 0 15px 0;
 }
 .question .content {
+  padding: 20px;
   border: 2px solid black;
   background-color: white;
 }
@@ -90,8 +91,15 @@ input.text {
 }
 
 .legs {
-  margin: 0 0 0 120px;
+  z-index: 1000;
+  position: relative;
+  display: block;
+  margin-left: 100px;
 }
+.logobottom {
+  display: block;
+}
+
 #tries {
   width: 252px;
   height: 128px;
